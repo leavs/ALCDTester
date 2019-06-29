@@ -7,4 +7,10 @@
     android:clickable="true"
     tools:context=".MainActivity">
 
+    <!-- Customized Widget need use full package quote -->
+    <com.chipsee.alcdtester.LcdTestView
+        android:id="@+id/lcdtestview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </android.support.constraint.ConstraintLayout>

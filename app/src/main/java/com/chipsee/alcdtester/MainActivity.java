@@ -11,41 +11,64 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "AndroidLCDTester";
+    LcdTestView mLcdTestView;
     private int colornum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        /* Just use Layout Background Color.
         LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         final ConstraintLayout constraintLayout = (ConstraintLayout) layoutInflater.inflate(R.layout.activity_main, null) ;
         constraintLayout.setBackgroundColor(Color.RED);
-        //setContentView(R.layout.activity_main);
         setContentView(constraintLayout);
+        */
+
+        /*Use custom LcdTestView*/
+        setContentView(R.layout.activity_main);
+        mLcdTestView = findViewById(R.id.lcdtestview);
+        mLcdTestView.setBackgroundColor(Color.RED);
 
         hideSystemUI();
 
-        constraintLayout.setOnClickListener(new View.OnClickListener(){
+        //constraintLayout.setOnClickListener(new View.OnClickListener(){
+         mLcdTestView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 colornum++;
                 switch(colornum){
                     case 1:
-                        constraintLayout.setBackgroundColor(Color.GREEN);
+                        mLcdTestView.setBackgroundColor(Color.GREEN);
+                        //constraintLayout.setBackgroundColor(Color.GREEN);
                         break;
                     case 2:
-                        constraintLayout.setBackgroundColor(Color.BLUE);
+                        mLcdTestView.setBackgroundColor(Color.BLUE);
+                        //constraintLayout.setBackgroundColor(Color.BLUE);
                         break;
                     case 3:
-                        constraintLayout.setBackgroundColor(Color.WHITE);
+                        mLcdTestView.setBackgroundColor(Color.WHITE);
+                        //constraintLayout.setBackgroundColor(Color.WHITE);
                         break;
                     case 4:
-                        constraintLayout.setBackgroundColor(Color.GRAY);
+                        mLcdTestView.setBackgroundColor(Color.GRAY);
+                        //constraintLayout.setBackgroundColor(Color.GRAY);
                         break;
                     case 5:
-                        constraintLayout.setBackgroundColor(Color.BLACK);
+                        mLcdTestView.setBackgroundColor(Color.BLACK);
+                        //constraintLayout.setBackgroundColor(Color.BLACK);
                         break;
                     case 6:
+                        mLcdTestView.grayScale(true);
+                        mLcdTestView.paneBorder(false);
+                        mLcdTestView.postInvalidate();
+                        break;
+                    case 7:
+                        mLcdTestView.paneBorder(true);
+                        mLcdTestView.grayScale(false);
+                        mLcdTestView.postInvalidate();
+                        break;
+                    case 8:
                         finish();
                         break;
                     default:
