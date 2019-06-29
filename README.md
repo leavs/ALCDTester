@@ -1,0 +1,2 @@
+# ALCDTester
+Android LCD Tester.
